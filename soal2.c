@@ -19,7 +19,7 @@
   char place[SIZE];
     rawtime = time(NULL);
   timeinfo = localtime ( &rawtime ); 
-  strcpy (file, "/home/osboxes/sisop20/");
+  strcpy (file, "/home/osboxes/modul2/");
   strftime (aa, SIZE, "%Y-%m-%d_%H:%M:%S", timeinfo);
   strcat (file, aa);
      child = fork();
