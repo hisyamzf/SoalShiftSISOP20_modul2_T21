@@ -10,28 +10,28 @@ int main(){
   int status;
   child = fork();
   if (child == 0) {
-    char *argv[] = {"mkdir","-p","/home/osboxes/sisop20/indomie",NULL};
+    char *argv[] = {"mkdir","-p","/home/osboxes/modul2/indomie",NULL};
     execv("/bin/mkdir", argv);
   }
         while((waitpid(child,&status,0))>0);
   child1 = fork();
   if (child1 == 0) {
     sleep(5);
-    char *argv[] = {"mkdir","-p","/home/osboxes/sisop20/sedaap",NULL};
+    char *argv[] = {"mkdir","-p","/home/osboxes/modul2/sedaap",NULL};
     execv("/bin/mkdir", argv);
   }
         while((waitpid(child1,&status,0))>0);
   child2 = fork();
   if (child2 == 0) { 
-    char *argv[] = {"unzip","/home/osboxes/sisop20/jpg.zip","-d","/home/vaniameith/modul2",NULL};
+    char *argv[] = {"unzip","/home/osboxes/modul2/jpg.zip","-d","/home/osboxes/modul2",NULL};
     execv("/usr/bin/unzip", argv);
   }
         while((waitpid(child2,&status,0))>0);
   child3 = fork();
   if (child3 == 0){
-    char *argv[] = {"find","/home/osboxes/sisop20/jpg",
+    char *argv[] = {"find","/home/osboxes/modul2/jpg",
                     "-mindepth","1","-type","f","-exec","mv",
-                    "{}","/home/osboxes/sisop20/sedaap",
+                    "{}","/home/osboxes/modul2/sedaap",
                     ";",NULL};
     execv("/usr/bin/find", argv);
   }
@@ -39,23 +39,23 @@ int main(){
         while((waitpid(child3,&status,0))>0);
   child4 = fork();
   if (child4 == 0){
-    char *argv[] = {"find","/home/osboxes/sisop20/jpg",
+    char *argv[] = {"find","/home/osboxes/modul2/jpg",
                     "-mindepth","1","-type","d","-exec","mv",
-                    "{}","/home/osboxes/sisop20/indomie",
+                    "{}","/home/osboxes/modul2/indomie",
                     ";",NULL};
     execv("/usr/bin/find", argv);
   }
         while((waitpid(child4,&status,0))>0);
   child5 = fork();
   if (child5 == 0){
-    char *argv[] = {"find","/home/osboxes/sisop20/indomie","-mindepth","1","-type","d","-exec","touch","{}/coba1.txt","'\'",";",NULL};
+    char *argv[] = {"find","/home/osboxes/modul2/indomie","-mindepth","1","-type","d","-exec","touch","{}/coba1.txt","'\'",";",NULL};
     execv("/usr/bin/find", argv);
   }
         while((waitpid(child5,&status,0))>0);
   child6 = fork();
   if (child6 == 0) {
     sleep(3);
-    char *argv[] = {"find","/home/osboxes/sisop20/indomie","-mindepth","1","-type","d","-exec","touch","{}/coba2.txt","'\'",";",NULL};
+    char *argv[] = {"find","/home/osboxes/modul2/indomie","-mindepth","1","-type","d","-exec","touch","{}/coba2.txt","'\'",";",NULL};
     execv("/usr/bin/find", argv);
   }  
 }
