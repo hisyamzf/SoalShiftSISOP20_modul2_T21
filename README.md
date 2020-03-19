@@ -34,7 +34,7 @@ Bayu Trianayasa                 05311840000038
   char place[SIZE];
     rawtime = time(NULL);
   timeinfo = localtime ( &rawtime ); 
-  strcpy (file, "/home/osboxes/sisop20/");
+  strcpy (file, "/home/osboxes/modul2/");
   strftime (aa, SIZE, "%Y-%m-%d_%H:%M:%S", timeinfo);
   strcat (file, aa);
      child = fork();
@@ -50,7 +50,7 @@ Bayu Trianayasa                 05311840000038
 ```
   rawtime = time(NULL);
   timeinfo = localtime ( &rawtime ); 
-  strcpy (file, "/home/vaniameith/khususoal2/");
+  strcpy (file, "/home/osboxes/modul2/");
   strftime (lalaland, SIZE, "%Y-%m-%d_%H:%M:%S", timeinfo);
   strcat (file, lalaland);
 
@@ -63,7 +63,7 @@ Bayu Trianayasa                 05311840000038
  ```
  - `rawtime = time(NULL);`, untuk mengambil local time pada linux.
  - `timeinfo = localtime ( &rawtime ); `, membuat variabel `timeinfo` untuk menyimpan local waktu yang telah diperoleh.
- - `strcpy (file, "/home/vaniameith/khususoal2/");`. `strcpy` untuk meng-copy `"/home/vaniameith/khususoal2/"` ke variabel string file.
+ - `strcpy (file, "/home/osboxes/modul2/");`. `strcpy` untuk meng-copy `"/home/osboxes/modul2/"` ke variabel string file.
  - `strftime (lalaland, SIZE, "%Y-%m-%d_%H:%M:%S", timeinfo);`. `strftime` fungsi untuk format tanggal dan waktu dan diambil dari variable string timeinfo tersebut.
  - `strcat (file, lalaland);`, untuk menggabungkan isi dalam `file` dan `lalaland`.
  - ` sleep(30);`, memberikan jeda waktu 30 detik antara pembuatan file/direktori pertama dengan direktori selanjutnya.
@@ -89,28 +89,28 @@ int main(){
   int status;
   child = fork();
   if (child == 0) {
-    char *argv[] = {"mkdir","-p","/home/osboxes/sisop20/indomie",NULL};
+    char *argv[] = {"mkdir","-p","/home/osboxes/modul2/indomie",NULL};
     execv("/bin/mkdir", argv);
   }
         while((waitpid(child,&status,0))>0);
   child1 = fork();
   if (child1 == 0) {
     sleep(5);
-    char *argv[] = {"mkdir","-p","/home/osboxes/sisop20/sedaap",NULL};
+    char *argv[] = {"mkdir","-p","/home/osboxes/modul2/sedaap",NULL};
     execv("/bin/mkdir", argv);
   }
         while((waitpid(child1,&status,0))>0);
   child2 = fork();
   if (child2 == 0) { 
-    char *argv[] = {"unzip","/home/osboxes/sisop20/jpg.zip","-d","/home/vaniameith/modul2",NULL};
+    char *argv[] = {"unzip","/home/osboxes/modul2/jpg.zip","-d","/home/osboxes/modul2",NULL};
     execv("/usr/bin/unzip", argv);
   }
         while((waitpid(child2,&status,0))>0);
   child3 = fork();
   if (child3 == 0){
-    char *argv[] = {"find","/home/osboxes/sisop20/jpg",
+    char *argv[] = {"find","/home/osboxes/modul2/jpg",
                     "-mindepth","1","-type","f","-exec","mv",
-                    "{}","/home/osboxes/sisop20/sedaap",
+                    "{}","/home/osboxes/modul2/sedaap",
                     ";",NULL};
     execv("/usr/bin/find", argv);
   }
@@ -118,23 +118,23 @@ int main(){
         while((waitpid(child3,&status,0))>0);
   child4 = fork();
   if (child4 == 0){
-    char *argv[] = {"find","/home/osboxes/sisop20/jpg",
+    char *argv[] = {"find","/home/osboxes/modul2/jpg",
                     "-mindepth","1","-type","d","-exec","mv",
-                    "{}","/home/osboxes/sisop20/indomie",
+                    "{}","/home/osboxes/modul2/indomie",
                     ";",NULL};
     execv("/usr/bin/find", argv);
   }
         while((waitpid(child4,&status,0))>0);
   child5 = fork();
   if (child5 == 0){
-    char *argv[] = {"find","/home/osboxes/sisop20/indomie","-mindepth","1","-type","d","-exec","touch","{}/coba1.txt","'\'",";",NULL};
+    char *argv[] = {"find","/home/osboxes/modul2/indomie","-mindepth","1","-type","d","-exec","touch","{}/coba1.txt","'\'",";",NULL};
     execv("/usr/bin/find", argv);
   }
         while((waitpid(child5,&status,0))>0);
   child6 = fork();
   if (child6 == 0) {
     sleep(3);
-    char *argv[] = {"find","/home/osboxes/sisop20/indomie","-mindepth","1","-type","d","-exec","touch","{}/coba2.txt","'\'",";",NULL};
+    char *argv[] = {"find","/home/osboxes/modul2/indomie","-mindepth","1","-type","d","-exec","touch","{}/coba2.txt","'\'",";",NULL};
     execv("/usr/bin/find", argv);
   }  
 }
@@ -144,14 +144,14 @@ int main(){
 ```
 child = fork();
   if (child == 0) {
-    char *argv[] = {"mkdir","-p","/home/vaniameith/modul2/indomie",NULL};
+    char *argv[] = {"mkdir","-p","/home/osboxes/modul2/indomie",NULL};
     execv("/bin/mkdir", argv);
   }
   ```
   - `child = fork()`, untuk membuat proses baru (child) dengan menduplikasi proses utama.
   - `child == 0`, bernilai sama dengan 0 untuk menandakan bahwa proses tersebut sukses.
   - `char *argv[]`, mendeklarasikan sebuah penyimpanan hasil dari proses/perintah di dalamnya.
-  - `"mkdir","-p","/home/vaniameith/modul2/indomie",NULL`. `mkdir` untuk membuat sebuah direktori/folder baru. `-p` yang berarti parent atau path yang berarti membuat semua direktori yang ada mengarah ke direktori baru/yang belum ada sebelumnya. `/home/vaniameith/modul2/indomie` adalah untuk mengarah tempat pembuatan direktori baru di dalam folder modul2 dengan nama indomie.
+  - `"mkdir","-p","/home/osboxes/modul2/indomie",NULL`. `mkdir` untuk membuat sebuah direktori/folder baru. `-p` yang berarti parent atau path yang berarti membuat semua direktori yang ada mengarah ke direktori baru/yang belum ada sebelumnya. `/home/osboxes/modul2/indomie` adalah untuk mengarah tempat pembuatan direktori baru di dalam folder modul2 dengan nama indomie.
   - `execv("/bin/mkdir", argv);`, mengeksekusi argv.
   
   ```
@@ -159,46 +159,46 @@ child = fork();
   child1 = fork();
   if (child1 == 0) {
     sleep(5);
-    char *argv[] = {"mkdir","-p","/home/vaniameith/modul2/sedaap",NULL};
+    char *argv[] = {"mkdir","-p","/home/osboxes/modul2/sedaap",NULL};
     execv("/bin/mkdir", argv);
   }
   ```
   - `while((waitpid(child,&status,0))>0)`, untuk menunggu child proses untuk berhenti 
   - `sleep(5)`, untuk memberikan jeda 5 detik dalam pembuatan antara output satu dengan output selanjutnya. Di soal ini, memberikan jeda pembuatan direktori indomie dengan direktori sedaap.
-  - `/home/vaniameith/modul2/sedaap`, membuat direktori baru di dalam modul2 dengan nama sedaap.
+  - `/home/osboxes/modul2/sedaap`, membuat direktori baru di dalam modul2 dengan nama sedaap.
   
  ##### Penjelasan soal 3b
  ```
   child2 = fork();
   if (child2 == 0) { 
-    char *argv[] = {"unzip","/home/vaniameith/modul2/jpg.zip","-d","/home/vaniameith/modul2",NULL};
+    char *argv[] = {"unzip","/home/osboxes/modul2/jpg.zip","-d","/home/osboxes/modul2",NULL};
     execv("/usr/bin/unzip", argv);
   }
   ```
   - `unzip -d`, untuk meng-unzip sebuah folder/file 
-  - `"/home/vaniameith/modul2/jpg.zip","-d","/home/vaniameith/modul2"`. `/home/vaniameith/modul2/jpg.zip` untuk menunjukkan letak dari file/folder yang akan di unzip. `/home/vaniameith/modul2` menentukan tempat untuk unzip dari folder tersebut.
+  - `"/home/osboxes/modul2/jpg.zip","-d","/home/osboxes/modul2"`. `/home/osboxes/modul2/jpg.zip` untuk menunjukkan letak dari file/folder yang akan di unzip. `/home/osboxes/modul2` menentukan tempat untuk unzip dari folder tersebut.
   
 ##### Penjelasan soal 3c
 ```
 if (child3 == 0){
-    char *argv[] = {"find","/home/vaniameith/modul2/jpg",
+    char *argv[] = {"find","/home/osboxes/modul2/jpg",
                     "-mindepth","1","-type","f","-exec","mv",
-                    "{}","/home/vaniameith/modul2/sedaap",
+                    "{}","/home/osboxes/modul2/sedaap",
                     ";",NULL};
     execv("/usr/bin/find", argv);
   }
   ```
-  - `"find","/home/vaniameith/modul2/jpg"`, berfungsi untuk menemukan isi/file/direktori yang sedang dicari dalam direktori/folder jpg.
+  - `"find","/home/osboxes/modul2/jpg"`, berfungsi untuk menemukan isi/file/direktori yang sedang dicari dalam direktori/folder jpg.
   - `"-mindepth","1"`, fungsi yang menandakan bahwa proses masuk ke dalam direktori tujuan sejumlah satu kali saja. Fungsi ini masih berhubungan dengan fungsi `find`. Fungsi ini mengecek semua isi dalam direktori tujuan tersebut.
   - `"-type","f"`, fungsi ini juga masih berhubungan dengan find dimana menjelaskan kepada proses bahwa untuk mencari isi di dalam direktori tujuan dengan tipe data file.
-  - `"mv",{}","/home/vaniameith/modul2/sedaap"`, untuk memindahkan suatu file yang telah ditemukan tersebut ke direktori/folder sedaap.
+  - `"mv",{}","/home/osboxes/modul2/sedaap"`, untuk memindahkan suatu file yang telah ditemukan tersebut ke direktori/folder sedaap.
 
 ```
 child4 = fork();
   if (child4 == 0){
-    char *argv[] = {"find","/home/vaniameith/modul2/jpg",
+    char *argv[] = {"find","/home/osboxes/modul2/jpg",
                     "-mindepth","1","-type","d","-exec","mv",
-                    "{}","/home/vaniameith/modul2/indomie",
+                    "{}","/home/osboxes/modul2/indomie",
                     ";",NULL};
     execv("/usr/bin/find", argv);
   }
@@ -209,7 +209,7 @@ child4 = fork();
 ```
  child5 = fork();
   if (child5 == 0){
-    char *argv[] = {"find","/home/vaniameith/modul2/indomie","-mindepth","1","-type","d","-exec","touch","{}/coba1.txt","'\'",";",NULL};
+    char *argv[] = {"find","/home/osboxes/modul2/indomie","-mindepth","1","-type","d","-exec","touch","{}/coba1.txt","'\'",";",NULL};
     execv("/usr/bin/find", argv);
   }
 ```
@@ -219,7 +219,7 @@ child4 = fork();
 child6 = fork();
   if (child6 == 0) {
     sleep(3);
-    char *argv[] = {"find","/home/vaniameith/modul2/indomie","-mindepth","1","-type","d","-exec","touch","{}/coba2.txt","'\'",";",NULL};
+    char *argv[] = {"find","/home/osboxes/modul2/indomie","-mindepth","1","-type","d","-exec","touch","{}/coba2.txt","'\'",";",NULL};
     execv("/usr/bin/find", argv);
  }
  ```
