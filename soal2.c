@@ -29,6 +29,3 @@
      execv("/bin/mkdir", argv);
    } 
 }
-
-
-
