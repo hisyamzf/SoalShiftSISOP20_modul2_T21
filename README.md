@@ -224,6 +224,3 @@ child6 = fork();
  }
  ```
  - program diatas untuk membuat file `coba2.txt` ke dalam direktori indomie.
- 
- 
- 
